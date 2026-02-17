@@ -29,18 +29,16 @@
           </header>
           <div class="chat-layout">
             <section class="chat-panel card">
-              <div class="chat-column">
-                <div id="messageList" class="message-list" aria-live="polite"></div>
-                <div class="composer-area">
-                  <textarea
-                    id="composer"
-                    rows="4"
-                    placeholder="Type a message. Use @ to insert a prompt handle..."
-                  ></textarea>
-                  <div id="autocomplete" class="autocomplete hidden" role="listbox"></div>
-                  <div class="composer-actions">
-                    <button id="sendBtn" class="btn primary">Send</button>
-                  </div>
+              <div id="messageList" class="message-list" aria-live="polite"></div>
+              <div class="composer-area">
+                <textarea
+                  id="composer"
+                  rows="4"
+                  placeholder="Type a message. Use @ to insert a prompt handle..."
+                ></textarea>
+                <div id="autocomplete" class="autocomplete hidden" role="listbox"></div>
+                <div class="composer-actions">
+                  <button id="sendBtn" class="btn primary">Send</button>
                 </div>
               </div>
             </section>
