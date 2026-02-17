@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Library Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-logo">PL</div>
+          <div>
+            <h1>Prompt Library</h1>
+            <p>Static Demo</p>
+          </div>
+        </div>
+        <nav class="nav-links" aria-label="Main navigation">
+          <button class="nav-link active" data-route="chat">Chat</button>
+          <button class="nav-link" data-route="library">Prompt Library</button>
+        </nav>
+      </aside>
+
+      <main class="main-panel">
+        <section class="view" data-view="chat">
+          <header class="view-header">
+            <h2>Chat</h2>
+          </header>
+          <div class="chat-layout">
+            <section class="chat-panel card">
+              <div id="messageList" class="message-list" aria-live="polite"></div>
+              <div class="composer-area">
+                <textarea
+                  id="composer"
+                  rows="4"
+                  placeholder="Type a message. Use @ to insert a prompt handle..."
+                ></textarea>
+                <div id="autocomplete" class="autocomplete hidden" role="listbox"></div>
+                <div class="composer-actions">
+                  <button id="sendBtn" class="btn primary">Send</button>
+                </div>
+              </div>
+            </section>
+
+            <aside class="preview-panel card">
+              <h3>Prompt Injection Preview</h3>
+              <div class="preview-section">
+                <h4>Applied prompts</h4>
+                <div id="appliedPrompts" class="chips muted">No prompts applied.</div>
+              </div>
+              <div class="preview-section">
+                <h4>Injected instructions</h4>
+                <pre id="injectedInstructions" class="preview-box">None.</pre>
+              </div>
+              <div class="preview-section">
+                <h4>User message (raw)</h4>
+                <pre id="rawMessage" class="preview-box">None yet.</pre>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view hidden" data-view="library">
+          <header class="view-header">
+            <h2>Prompt Library</h2>
+            <div class="header-actions">
+              <button id="newPromptBtn" class="btn primary">New Prompt</button>
+              <button id="exportBtn" class="btn">Export JSON</button>
+              <label class="btn file-btn" for="importInput">Import JSON</label>
+              <input id="importInput" type="file" accept="application/json" hidden />
+            </div>
+          </header>
+
+          <div class="card table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Handle</th>
+                  <th>Title</th>
+                  <th>Updated</th>
+                  <th>Tags</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="promptTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="promptModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-content card">
+        <div class="modal-header">
+          <h3 id="modalTitle">New Prompt</h3>
+          <button id="closeModalBtn" class="icon-btn" aria-label="Close modal">✕</button>
+        </div>
+
+        <form id="promptForm">
+          <input id="editingOriginalHandle" type="hidden" />
+
+          <label>
+            Handle
+            <input id="handleInput" type="text" placeholder="e.g. writing_assistant" required />
+            <small>Will be normalized to letters, numbers, and underscore only.</small>
+          </label>
+
+          <label>
+            Title
+            <input id="titleInput" type="text" required />
+          </label>
+
+          <label>
+            Instructions
+            <textarea id="instructionsInput" rows="6" required></textarea>
+          </label>
+
+          <label>
+            Tags (comma-separated)
+            <input id="tagsInput" type="text" placeholder="writing, editing" />
+          </label>
+
+          <p id="formError" class="form-error hidden"></p>
+
+          <div class="modal-actions">
+            <button type="button" id="cancelModalBtn" class="btn">Cancel</button>
+            <button type="submit" class="btn primary">Save Prompt</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="popover" class="popover hidden"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
