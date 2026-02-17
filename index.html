@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prompt Library Demo</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=2" />
   </head>
   <body>
     <div class="app-shell">
@@ -26,19 +26,22 @@
         <section class="view" data-view="chat">
           <header class="view-header">
             <h2>Chat</h2>
+            <span class="ui-version" aria-label="UI version">UI v2</span>
           </header>
           <div class="chat-layout">
             <section class="chat-panel card">
-              <div id="messageList" class="message-list" aria-live="polite"></div>
-              <div class="composer-area">
-                <textarea
-                  id="composer"
-                  rows="4"
-                  placeholder="Type a message. Use @ to insert a prompt handle..."
-                ></textarea>
-                <div id="autocomplete" class="autocomplete hidden" role="listbox"></div>
-                <div class="composer-actions">
-                  <button id="sendBtn" class="btn primary">Send</button>
+              <div class="chat-column">
+                <div id="messageList" class="message-list" aria-live="polite"></div>
+                <div class="composer-area">
+                  <textarea
+                    id="composer"
+                    rows="4"
+                    placeholder="Type a message. Use @ to insert a prompt handle..."
+                  ></textarea>
+                  <div id="autocomplete" class="autocomplete hidden" role="listbox"></div>
+                  <div class="composer-actions">
+                    <button id="sendBtn" class="btn primary">Send</button>
+                  </div>
                 </div>
               </div>
             </section>
@@ -65,6 +68,7 @@
           <header class="view-header">
             <h2>Prompt Library</h2>
             <div class="header-actions">
+              <span class="ui-version" aria-label="UI version">UI v2</span>
               <button id="newPromptBtn" class="btn primary">New Prompt</button>
               <button id="exportBtn" class="btn">Export JSON</button>
               <label class="btn file-btn" for="importInput">Import JSON</label>
@@ -133,6 +137,6 @@
 
     <div id="popover" class="popover hidden"></div>
 
-    <script src="app.js"></script>
+    <script src="./app.js?v=2"></script>
   </body>
 </html>
